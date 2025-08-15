@@ -27,6 +27,8 @@ const Login = async (req, res) => {
   );
   res.cookie("jwt", RefreshToken, {
     httpOnly: true,
+    secure: true,
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000,
   });
   return res.status(200).json({ AccessToken: AccessToken });
