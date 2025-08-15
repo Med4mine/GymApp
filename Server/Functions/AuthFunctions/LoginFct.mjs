@@ -30,6 +30,7 @@ const Login = async (req, res) => {
     secure: true,
     sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000,
+    domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
   });
   return res.status(200).json({ AccessToken: AccessToken });
 };

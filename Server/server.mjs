@@ -23,6 +23,8 @@ app.use(
     credentials: true,
   })
 );
+app.options("/AdminDashboard", cors());
+app.options("/refreshAdminToken", cors());
 //routes import
 import RegisterRoute from "./Routes/AuthRoutes/registerRoute.mjs";
 import LoginRoute from "./Routes/AuthRoutes/loginRoute.mjs";
