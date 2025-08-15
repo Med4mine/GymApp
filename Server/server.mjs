@@ -14,17 +14,19 @@ import mongoose from "mongoose";
 mongoose.connect(process.env.MongooseLink);
 //Cros platform
 import cors from "cors";
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173", // for local dev
-      "https://gym-app-frontend-omega.vercel.app", // deployed frontend
-    ],
-    credentials: true,
-  })
-);
-app.options("/AdminDashboard", cors());
-app.options("/refreshAdminToken", cors());
+
+corsOptions = {
+  origin: [
+    "http://localhost:5173", // for local dev
+    "https://gym-app-frontend-omega.vercel.app", // deployed frontend
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use("*", cors(corsOptions));
+app.options("/AdminDashboard", cors(corsOptions));
+app.options("/refreshAdminToken", cors(corsOptions));
 //routes import
 import RegisterRoute from "./Routes/AuthRoutes/registerRoute.mjs";
 import LoginRoute from "./Routes/AuthRoutes/loginRoute.mjs";
