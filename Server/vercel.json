@@ -1,27 +1,29 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.mjs",
-      "use": "@vercel/node"
+  "functions": {
+    "api/**/*.mjs": {
+      "runtime": "nodejs20.x",
+      "memory": 1024,
+      "maxDuration": 10
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.mjs",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    }
+  },
+  "rewrites": [
+    { "source": "/:path*", "destination": "/api/:path*" }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "https://gym-app-frontend-omega.vercel.app" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" },
-        { "key": "Access-Control-Allow-Credentials", "value": "true" }
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
       ]
     }
-  ]
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://GymApp:GymApp-2025@gymapp.ljsqye7.mongodb.net/?retryWrites=true&w=majority&appName=GymApp",
+    "SecretAccessToken":"5695c73ad716bac01679eb0ee44a7da400e6a14ef129bfc07f228817237c8f954c1b72718c67cf6aecc0c5081f27a5280da42a62fbc3f210ea825a819dad3ecd",
+"SecretRefreshToken":"5824d6b3640a242b5adf1890d3aca5f46042c45066c2218b5107c6bcd7e848550cbf8ef6244447d441d7a48d7a33e48dccf112cf9186ae54be2d446cea73febd"
+  },
+  "regions": ["fra1"]
 }
