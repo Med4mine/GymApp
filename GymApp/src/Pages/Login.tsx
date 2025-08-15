@@ -29,12 +29,7 @@ function Login() {
   };
 
   return (
-    <><Link
-        to="/register"
-        className="w-full inline-block bg-green-600 hover:bg-green-700 text-white text-center font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4"
-      >
-        Go to Register
-      </Link>
+    <>      
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
