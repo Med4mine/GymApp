@@ -1,38 +1,17 @@
 {
+  "installCommand": "npm install --legacy-peer-deps",
   "version": 2,
   "builds": [
     {
-      "src": "server.mjs", 
+      "src": "server.mjs",
       "use": "@vercel/node"
+    },
+    {
+      "src": "src/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { 
-          "key": "Access-Control-Allow-Origin", 
-          "value": "https://gym-app-frontend-omega.vercel.app" 
-        },
-        { 
-          "key": "Access-Control-Allow-Methods", 
-          "value": "GET,POST,PUT,DELETE,OPTIONS" 
-        },
-        { 
-          "key": "Access-Control-Allow-Headers", 
-          "value": "X-Requested-With, Content-Type, Authorization" 
-        },
-        { 
-          "key": "Access-Control-Allow-Credentials", 
-          "value": "true" 
-        }
-      ]
-    }
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
