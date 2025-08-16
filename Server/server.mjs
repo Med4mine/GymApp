@@ -15,7 +15,7 @@ mongoose.connect(process.env.MongooseLink);
 //Cros platform
 import cors from "cors";
 
-corsOptions = {
+const corsOptions = {
   origin: [
     "http://localhost:5173", // for local dev
     "https://gym-app-frontend-omega.vercel.app", // deployed frontend
@@ -24,9 +24,8 @@ corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use("*", cors(corsOptions));
-app.options("/AdminDashboard", cors(corsOptions));
-app.options("/refreshAdminToken", cors(corsOptions));
+app.use(cors(corsOptions));
+
 //routes import
 import RegisterRoute from "./Routes/AuthRoutes/registerRoute.mjs";
 import LoginRoute from "./Routes/AuthRoutes/loginRoute.mjs";
