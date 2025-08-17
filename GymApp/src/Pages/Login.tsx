@@ -25,7 +25,7 @@ function Login() {
 
     const accessToken = res.data.AccessToken;
     setAccessToken(accessToken);
-    if (res.data.AccessToken) Navigate("/admin-dashboard");
+    if (res.data.AccessToken) Navigate("/");
   };
 
   return (
