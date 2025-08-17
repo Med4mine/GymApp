@@ -15,16 +15,12 @@ mongoose.connect(process.env.MongooseLink);
 //Cros platform
 import cors from "cors";
 
-const corsOptions = {
-  origin: [
-    "http://localhost:5173", // for local dev
-    "https://gym-app-frontend-omega.vercel.app", // deployed frontend
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 //routes import
 import RegisterRoute from "./Routes/AuthRoutes/registerRoute.mjs";
