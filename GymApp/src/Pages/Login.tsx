@@ -1,16 +1,17 @@
+"use client";
+
+import type React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useSecurityContext } from "../Context/SecurityContext";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
->>>>>>> parent of 0731877 (first commit)
 function Login() {
   const Navigate = useNavigate();
   const { setAccessToken } = useSecurityContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const LoginPerson = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await axios.post(
@@ -24,10 +25,10 @@ function Login() {
 
     const accessToken = res.data.AccessToken;
     setAccessToken(accessToken);
-    if (res.data.AccessToken) Navigate("/");
+    if (res.data.AccessToken) Navigate("/admin-dashboard");
   };
+
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
@@ -80,34 +81,10 @@ function Login() {
             >
               Go to Register
             </Link>
-=======
-    <>
-      <form action="" onSubmit={LoginPerson}>
-        <div>
-          <div>
-            <label>Username:</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
->>>>>>> parent of 0731877 (first commit)
           </div>
-          <div>
-            <label>Password:</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 }
 
